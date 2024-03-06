@@ -86,7 +86,10 @@ public class MineSweeper {
                     controlCol = userCol;
 
                     if (this.bombMap[userRow][userCol].equals(" * ")) {
-                        System.out.println("Game Over!");
+                        System.out.println("Game Over! Try Again!");
+                        System.out.println();
+                        mineMap();
+                        userMap();
                         break;
                     }
                     mineControl();
@@ -96,7 +99,11 @@ public class MineSweeper {
                         bombNumber = 0;
                     }
                     if (moveCount == 0) {
-                        System.out.println("You Won!");
+                        System.out.println("You Won! Another Game?");
+                        System.out.println();
+
+                        mineMap();
+                        userMap();
                         break;
                     }
                 } else {
@@ -129,4 +136,4 @@ public class MineSweeper {
     }
 }
 
-
+// Game over olunca try again yap!

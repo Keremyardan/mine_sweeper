@@ -15,7 +15,7 @@ public class MineSweeper {
     int userCol;
     int bombNumber;
 
-    // A scanner has indicated in otder to let the player add his/her own values in the creatin of matrix. (refers to chapter 9)
+    // A scanner has indicated in otder to let the player add his/her own values in the creation of matrix. (refers to chapter 9)
     Scanner input = new Scanner(System.in);
     Random random = new Random();
 
@@ -24,14 +24,14 @@ public class MineSweeper {
         this.col = col;
         this.bombMap = new String[row][col];
         this.gameMap = new String[row][col];
-        // Mines are being placed according to the values those will be entered. Quarter of the is going to be calculated and mines will be placed as 1/4 (refers to chapter 5)
+        // Mines are being placed as 4/1 according to the values those will be entered. (refers to chapter 5)
         this.mineCount = (row * col) / 4;
         this.moveCount = (col * row) - mineCount;
         mineMap();
         userMap();
     }
 
-    //  Mine map has been declared which is being showed to player. (refers to 6th chapter)
+    //  Mine map has been declared which is being showed to the player. (refers to 6th chapter)
     public void mineMap() {
         System.out.println("Mine map!");
         for (int i = 0; i < bombMap.length; i++) {
@@ -53,7 +53,7 @@ public class MineSweeper {
 
         }
 
-        //In the code below, fot the matrix values are being taken from player is getting combined and printed to the screenç.
+        //In the code below, the matrix values are being taken from player, getting combined and printed to the screenç.
         for (int i = 0; i < bombMap.length; i++) {
             for (int j = 0; j < bombMap[i].length; j++) {
                 System.out.print(bombMap[i][j]);
@@ -85,12 +85,13 @@ public class MineSweeper {
         }
         while (true) {
             System.out.println("Enter row");
-            //In the code below, the values for matrix is being asked from player to provide for rows. (refers to 9th chapter as well.)
+            //In the code below, the value for matrix is being asked from player to provide for rows. (refers to 9th chapter as well.)
             this.userRow = input.nextInt();
             System.out.println("Enter column");
-            //In the code below, the values for matrix is being asked from player to provide for columns. (refers to 9th chapter as well.)
+            //In the code below, the value for matrix is being asked from player to provide for columns. (refers to 9th chapter as well.)
             this.userCol = input.nextInt();
-            if (userRow < this.row && userCol < this.col) {
+            //In the code below, the previous moves of the player is being kept.
+            if (userRow < this.row && this.userCol < this.col) {
                 if (controlRow != userRow || controlCol != userCol) {
                     controlRow = userRow;
                     controlCol = userCol;
@@ -119,7 +120,7 @@ public class MineSweeper {
                         break;
                     }
                 } else {
-                    //Below, if the coordinates have been used, a message is being thrown to player in order to let him/her enter another value. (refers to 11th chapter)
+                    //Below, if the coordinates have been used, a message is being thrown to the player in order to let him/her enter another value. (refers to 11th chapter)
                     System.out.println("This coordinate has been used!");
                 }
                 for (int i = 0; i < gameMap.length; i++) {
@@ -135,6 +136,7 @@ public class MineSweeper {
         }
     }
 
+    //In the code below and as declared above, near mine values are being controlled.
     public void mineControl() {
         for (int i = userRow - 1; i <= userRow + 1; i++) {
             for (int j = userCol - 1; j <= userCol + 1; j++) {
